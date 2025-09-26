@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:cp1}?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&characterEncoding=UTF-8
+    username: ${DB_USER:cp1}
+    password: ${DB_PASS:cp1}
+  jpa:
+    hibernate:
+      ddl-auto: update   # pra prova ajuda; em prod real use validate/migrations
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
+      hibernate.format_sql: true
+      hibernate.show_sql: true
+
+# springdoc (Swagger UI em /swagger-ui/index.html)
+springdoc:
+  swagger-ui:
+    path: /swagger-ui/index.html
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.orm.jdbc.bind: trace
